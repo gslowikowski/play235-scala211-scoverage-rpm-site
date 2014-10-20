@@ -32,7 +32,7 @@
 # -jvm-debug <port>  
 
 #Play 2 configuration file
--Dconfig.file=/opt/rbcserver/conf/application.conf
+-Dconfig.file=/opt/module/conf/application.conf
 
 # Production logger configuration
 -Dlogger.resource=/opt/module/conf/prod-logger.xml

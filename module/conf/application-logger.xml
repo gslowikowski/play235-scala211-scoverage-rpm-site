@@ -78,8 +78,7 @@
     <logger name="ch.qos.logback" level="INFO"/>
     <logger name="javax.management" level="INFO"/>
     
-    <!-- RBC Classes -->
-    <logger name="com.rbcplatform" level="INFO" />
+    <logger name="com.github" level="INFO" />
     <logger name="controllers" level="INFO" />
 
     <root level="INFO">
