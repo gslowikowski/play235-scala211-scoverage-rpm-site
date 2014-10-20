@@ -1,0 +1,19 @@
+#
+# Adding module to autostart
+# 
+addservice() {
+    if hash update-rc.d 2>/dev/null; then
+        echo "Adding module to autostart using update-rc.d"
+        update-rc.d module defaults
+    elif hash chkconfig 2>/dev/null; then
+        echo "Adding module to autostart using chkconfig"
+        chkconfig --add module
+        chkconfig module on
+    else
+        echo "WARNING: Could not put module in autostart"
+    fi
+}
+
+addservice
+echo "post-rpm: Restarting Service"
+service module restart

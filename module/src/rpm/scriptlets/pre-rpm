@@ -1,0 +1,11 @@
+# Adding system user/group : rbcserver and rbcserver
+if ! getent group | grep -q "^rbcserver:" ;
+then
+    echo "Creating system group: rbcserver"
+    groupadd --system rbcserver
+fi
+if ! getent passwd | grep -q "^rbcserver:"; 
+then
+    echo "Creating system user: rbcserver"
+    useradd --gid rbcserver --no-create-home --system -c 'RBC Platform App on Play framework' rbcserver
+fi

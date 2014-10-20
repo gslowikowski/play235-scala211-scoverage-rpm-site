@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Set debug to true to get logback config conflicts with multiple logback.xml -->
+<configuration scan="false" scanPeriod="10 seconds" debug="false">
+
+    <!-- Silences the console debug output of logback when multiple logback.xml files are found  -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    
+    <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+    
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <!-- NOT for production use as it uses Method and Line debugs that are expesnive. Disable CONSOLE in production -->
+        <encoder>
+            <pattern>%coloredLevel %date{ISO8601} [%logger{16}.%M:%L | [%thread] %X{akkaSource}] - %message%n%xException{5}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/application.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d %-5level %logger [%thread] - %msg%n</pattern>
+            <!-- 
+            <pattern>%date{yyyy-MM-dd} %X{akkaTimestamp} %-5level[%thread] %logger{1} - %msg%n</pattern>
+             -->
+        </encoder>
+    </appender>
+
+    <appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
+        <!-- <syslogHost>localhost</syslogHost> -->
+        <syslogHost>localhost</syslogHost>
+        <facility>USER</facility>
+        <port>1514</port>
+        <suffixPattern>[ResourceServer] [%level] [%thread] %logger %msg</suffixPattern>
+    </appender>
+    
+    <!-- 
+    <appender name="FILE_ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logFile.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+     -->
+    
+    <!-- 
+    <appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+        <SMTPHost></SMTPHost>
+        <SMTPPort></SMTPPort>
+        <SSL></SSL>
+        <Username></Username>
+        <Password></Password>
+        <To></To>
+        <From></From>
+        <Subject>Production: %logger{20} - %m</Subject>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{HH:mm:ss.SSS} [%thread] - %msg%n%mdc%n</pattern>
+        </layout>
+        <cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTrackerImpl">
+            <bufferSize>100</bufferSize>
+        </cyclicBufferTracker>
+    </appender>
+    -->
+    
+    <!--  Infra classes -->
+    <!-- additivity="false" -->
+    <logger name="akka" level="INFO" />
+    <logger name="play" level="INFO" />
+    <logger name="play.akka" level="INFO" />    
+    <logger name="application" level="INFO" />
+    <logger name="ch.qos.logback" level="INFO"/>
+    <logger name="javax.management" level="INFO"/>
+    
+    <!-- RBC Classes -->
+    <logger name="com.rbcplatform" level="INFO" />
+    <logger name="controllers" level="INFO" />
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="SYSLOG"/>
+        <appender-ref ref="FILE" />
+        <!-- <appender-ref ref="FILE_ROLLING"/> -->
+        <!-- <appender-ref ref="EMAIL" /> -->
+    </root>
+
+</configuration>

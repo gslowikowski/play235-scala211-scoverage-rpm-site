@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Set debug to true to get logback config conflicts with multiple logback.xml -->
+<configuration scan="false" scanPeriod="10 seconds" debug="false">
+ <!-- Silences the console debug output of logback when multiple logback.xml files are found -->
+ <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+ <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+
+ <appender name="FILE_ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <file>logs/application.log</file>
+  <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+   <fileNamePattern>application.%d{yyyy-MM-dd}.log</fileNamePattern>
+   <maxHistory>90</maxHistory>
+  </rollingPolicy>
+  <encoder>
+   <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+  </encoder>
+ </appender>
+
+ <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+  <appender-ref ref="FILE_ROLLING" />
+ </appender>
+
+ <!-- RBC Classes -->
+ <logger name="com.rbcplatform" level="INFO">
+  <appender-ref ref="ASYNC" />
+ </logger>
+ <root level="WARN">
+  <appender-ref ref="ASYNC" />
+ </root>
+</configuration>

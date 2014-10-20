@@ -1,0 +1,18 @@
+# Removing system user/group : rbcserver and rbcserver
+echo "postun:.." 
+if [ "$1" = "0" ]; 
+then
+  echo "Uninstall detected"
+  echo "Trying to delete system user and group [rbcserver:rbcserver]"
+  if getent passwd | grep -q "^rbcserver:"; 
+  then
+    echo "Deleting system user: rbcserver"
+    userdel rbcserver
+  fi
+  if getent group | grep -q "^rbcserver:" ;
+  then
+    echo "Deleting system group: rbcserver"
+    groupdel rbcserver
+  fi
+fi
+exit 0

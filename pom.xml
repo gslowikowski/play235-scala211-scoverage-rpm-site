@@ -1,0 +1,594 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+ xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <modelVersion>4.0.0</modelVersion>
+ <!-- ======================== -->
+ <!-- ======= PROJECT ======== -->
+ <!-- ======================== -->
+ <groupId>com.github</groupId>
+ <artifactId>play235-scala211-scoverage-rpm-site</artifactId>
+ <version>0.0.1-SNAPSHOT</version>
+ <packaging>pom</packaging>
+ <name>play235-scala211-scoverage-rpm-site</name>
+ <url>.</url>
+ <description>The parent Pom</description>
+ <!-- ======================= -->
+ <!-- ======= MODULES ======= -->
+ <!-- ======================= -->
+ <modules>
+  <module>module</module>
+ </modules>
+ <!-- ======================= -->
+ <!-- ===== PROPERTIES ====== -->
+ <!-- ======================= -->
+ <properties>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <compiler.version>1.8</compiler.version>
+  <scala.version>2.11.2</scala.version>
+  <play2-scala.version>2.11</play2-scala.version>
+  <play2.plugin.version>1.0.0-alpha8</play2.plugin.version>
+  <play2.version>2.3.5</play2.version>
+  <play-doc.version>1.2.1</play-doc.version>
+  <play-cache.version>2.3.0</play-cache.version>
+  <sbt-compiler.plugin.version>1.0.0-beta4</sbt-compiler.plugin.version>
+  <nscala-time.version>1.4.0</nscala-time.version>
+  <commons-lang3.version>3.3.2</commons-lang3.version>
+  <reactivemongo.version>0.10.5.0.akka23</reactivemongo.version>
+  <asm.version>5.0.3</asm.version>
+  <specs2_2.10.version>1.14</specs2_2.10.version>
+  <mvn.sites.deploy.url>file:///var/www/site</mvn.sites.deploy.url>
+ </properties>
+ <!-- ======================= -->
+ <!-- ==== DEPENDENCIES ===== -->
+ <!-- ======================= -->
+ <dependencies>
+  <dependency>
+   <artifactId>junit</artifactId>
+   <groupId>junit</groupId>
+   <scope>test</scope>
+  </dependency>
+ </dependencies>
+ <!-- ======================= -->
+ <!-- = DEPENDENCY MANAGEMENT -->
+ <!-- ======================= -->
+ <dependencyManagement>
+  <dependencies>
+   <dependency>
+    <groupId>org.scala-lang</groupId>
+    <artifactId>scala-compiler</artifactId>
+    <version>${scala.version}</version>
+    <scope>provided</scope>
+   </dependency>
+   <dependency>
+    <groupId>org.scala-lang</groupId>
+    <artifactId>scala-library</artifactId>
+    <version>${scala.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>com.typesafe.play</groupId>
+    <artifactId>play_${play2-scala.version}</artifactId>
+    <version>${play2.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>com.typesafe.play</groupId>
+    <artifactId>play-java_${play2-scala.version}</artifactId>
+    <version>${play2.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>com.typesafe.play</groupId>
+    <artifactId>play-test_${play2-scala.version}</artifactId>
+    <version>${play2.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>com.typesafe.play</groupId>
+    <artifactId>play-doc_${play2-scala.version}</artifactId>
+    <version>${play-doc.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>com.typesafe.play</groupId>
+    <artifactId>play-cache_${play2-scala.version}</artifactId>
+    <version>${play-cache.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>com.typesafe.play</groupId>
+    <artifactId>filters-helpers_${play2-scala.version}</artifactId>
+    <version>${play2.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>com.github.nscala-time</groupId>
+    <artifactId>nscala-time_${play2-scala.version}</artifactId>
+    <version>${nscala-time.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>${commons-lang3.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>org.ow2.asm</groupId>
+    <artifactId>asm</artifactId>
+    <version>${asm.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>org.reactivemongo</groupId>
+    <artifactId>reactivemongo_${play2-scala.version}</artifactId>
+    <version>${reactivemongo.version}</version>
+   </dependency>
+   <dependency>
+    <groupId>org.fusesource.jansi</groupId>
+    <artifactId>jansi</artifactId>
+    <version>1.11</version>
+   </dependency>
+   <dependency>
+    <groupId>org.mindrot</groupId>
+    <artifactId>jbcrypt</artifactId>
+    <version>0.3m</version>
+   </dependency>
+   <dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.3.5</version>
+   </dependency>
+   <dependency>
+    <groupId>commons-configuration</groupId>
+    <artifactId>commons-configuration</artifactId>
+    <version>1.10</version>
+   </dependency>
+   <dependency>
+    <groupId>com.damnhandy</groupId>
+    <artifactId>handy-uri-templates</artifactId>
+    <version>2.0.2</version>
+   </dependency>
+   <dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>18.0</version>
+   </dependency>
+   <!-- Tests -->
+   <dependency>
+    <artifactId>junit</artifactId>
+    <groupId>junit</groupId>
+    <version>4.11</version>
+   </dependency>
+   <dependency>
+    <groupId>org.scalatest</groupId>
+    <artifactId>scalatest_${play2-scala.version}</artifactId>
+    <version>2.2.2</version>
+   </dependency>
+  </dependencies>
+ </dependencyManagement>
+ <!-- ======================= -->
+ <!-- ======== BUILD ======== -->
+ <!-- ======================= -->
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-site-plugin</artifactId>
+    <configuration>
+     <locales>en</locales>
+    </configuration>
+   </plugin>
+   <!-- <plugin> -->
+   <!-- <artifactId>maven-antrun-plugin</artifactId> -->
+   <!-- </plugin> -->
+   <plugin>
+    <artifactId>maven-source-plugin</artifactId>
+   </plugin>
+   <plugin>
+   <artifactId>maven-compiler-plugin</artifactId>
+   <configuration>
+   <source>${compiler.version}</source>
+   <target>${compiler.version}</target>
+   </configuration>
+   </plugin>
+   <plugin>
+    <artifactId>maven-javadoc-plugin</artifactId>
+   </plugin>
+   <!-- <plugin> -->
+   <!-- <artifactId>maven-assembly-plugin</artifactId> -->
+   <!-- </plugin> -->
+   <!-- <plugin> -->
+   <!-- <artifactId>maven-help-plugin</artifactId> -->
+   <!-- </plugin> -->
+   <!-- Running tests -->
+   <!-- <plugin> -->
+   <!-- <groupId>org.apache.maven.plugins</groupId> -->
+   <!-- <artifactId>maven-surefire-plugin</artifactId> -->
+   <!-- </plugin> -->
+   <plugin>
+    <artifactId>maven-resources-plugin</artifactId>
+   </plugin>
+  </plugins>
+  <!-- ======================= -->
+  <!-- == PLUGIN MANAGEMENT == -->
+  <!-- ======================= -->
+  <pluginManagement>
+   <plugins>
+    <plugin>
+     <groupId>com.google.code.play2-maven-plugin</groupId>
+     <artifactId>play2-maven-plugin</artifactId>
+     <version>${play2.plugin.version}</version>
+    </plugin>
+    <plugin>
+     <groupId>com.google.code.sbt-compiler-maven-plugin</groupId>
+     <artifactId>sbt-compiler-maven-plugin</artifactId>
+     <version>${sbt-compiler.plugin.version}</version>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-compiler-plugin</artifactId>
+     <version>3.1</version>
+     <configuration>
+      <source>1.7</source>
+      <target>1.7</target>
+     </configuration>
+    </plugin>
+    <plugin>
+     <artifactId>maven-dependency-plugin</artifactId>
+     <version>2.9</version>
+    </plugin>
+    <plugin>
+     <artifactId>maven-resources-plugin</artifactId>
+     <version>2.7</version>
+    </plugin>
+    <plugin>
+     <artifactId>maven-install-plugin</artifactId>
+     <version>2.5.2</version>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-help-plugin</artifactId>
+     <version>2.2</version>
+     <executions>
+      <execution>
+       <phase>generate-resources</phase>
+       <goals>
+        <goal>effective-pom</goal>
+       </goals>
+       <configuration>
+        <output>${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/effective-pom.xml</output>
+       </configuration>
+      </execution>
+     </executions>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-javadoc-plugin</artifactId>
+     <version>2.10.1</version>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-release-plugin</artifactId>
+     <version>2.5.1</version>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-deploy-plugin</artifactId>
+     <version>2.8.2</version>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-jar-plugin</artifactId>
+     <version>2.5</version>
+     <configuration>
+      <archive>
+       <addMavenDescriptor>true</addMavenDescriptor>
+       <index>true</index>
+       <manifest>
+        <addClasspath>true</addClasspath>
+       </manifest>
+       <!-- <manifestEntries> -->
+       <!-- <mode>development</mode> -->
+       <!-- <url>${project.url}</url> -->
+       <!-- <key>value</key> -->
+       <!-- </manifestEntries> -->
+      </archive>
+      <excludes>
+       <exclude>application.conf</exclude>
+       <exclude>prod-logger.xml</exclude>
+       <exclude>application-logger.xml</exclude>
+      </excludes>
+     </configuration>
+     <executions>
+      <execution>
+       <goals>
+        <goal>test-jar</goal>
+       </goals>
+      </execution>
+     </executions>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-source-plugin</artifactId>
+     <version>2.3</version>
+     <executions>
+      <execution>
+       <goals>
+        <goal>jar</goal>
+        <goal>test-jar</goal>
+       </goals>
+      </execution>
+     </executions>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-assembly-plugin</artifactId>
+     <version>2.4.1</version>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-clean-plugin</artifactId>
+     <version>2.6</version>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-antrun-plugin</artifactId>
+     <version>1.7</version>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-site-plugin</artifactId>
+     <version>3.4</version>
+     <configuration>
+      <locales>en</locales>
+     </configuration>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-surefire-plugin</artifactId>
+     <version>2.17</version>
+    </plugin>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-project-info-reports-plugin</artifactId>
+     <version>2.7</version>
+    </plugin>
+    <plugin>
+     <groupId>org.codehaus.mojo</groupId>
+     <artifactId>cobertura-maven-plugin</artifactId>
+     <version>2.6</version>
+    </plugin>
+    <plugin>
+     <groupId>org.codehaus.groovy</groupId>
+     <artifactId>groovy-eclipse-compiler</artifactId>
+     <version>2.9.0-01</version>
+    </plugin>
+    <plugin>
+     <groupId>org.codehaus.groovy</groupId>
+     <artifactId>groovy-eclipse-batch</artifactId>
+     <version>2.3.4-01</version>
+    </plugin>
+    <plugin>
+     <groupId>com.bluetrainsoftware.maven</groupId>
+     <artifactId>groovydoc-maven-plugin</artifactId>
+     <version>1.3</version>
+    </plugin>
+    <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+    <plugin>
+     <groupId>org.eclipse.m2e</groupId>
+     <artifactId>lifecycle-mapping</artifactId>
+     <version>1.0.0</version>
+     <configuration>
+      <lifecycleMappingMetadata>
+       <pluginExecutions>
+        <pluginExecution>
+         <pluginExecutionFilter>
+          <groupId>org.nanoko.playframework</groupId>
+          <artifactId>play2-maven-plugin</artifactId>
+          <versionRange>[1.2.5,)</versionRange>
+          <goals>
+           <goal>copy-dependencies</goal>
+           <goal>compile</goal>
+          </goals>
+         </pluginExecutionFilter>
+         <action>
+          <ignore></ignore>
+         </action>
+        </pluginExecution>
+       </pluginExecutions>
+      </lifecycleMappingMetadata>
+     </configuration>
+    </plugin>
+   </plugins>
+  </pluginManagement>
+ </build>
+ <!-- ======================= -->
+ <!-- REPORTING - VERSIONNING -->
+ <!-- http://mojo.codehaus.org/versions-maven-plugin/usage.html -->
+ <!-- mvn -N versions:update-child-modules -->
+ <!-- mvn versions:commit -->
+ <!-- ======================= -->
+ <reporting>
+  <plugins>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-project-info-reports-plugin</artifactId>
+    <version>2.7</version>
+    <reportSets>
+     <reportSet>
+      <reports>
+       <report>index</report>
+       <report>summary</report>
+       <report>modules</report>
+       <report>dependencies</report>
+      </reports>
+     </reportSet>
+    </reportSets>
+   </plugin>
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>versions-maven-plugin</artifactId>
+    <version>2.0</version>
+    <inherited>false</inherited>
+    <reportSets>
+     <reportSet>
+      <reports>
+       <report>dependency-updates-report</report>
+       <report>plugin-updates-report</report>
+       <report>property-updates-report</report>
+      </reports>
+     </reportSet>
+    </reportSets>
+   </plugin>
+  </plugins>
+ </reporting>
+ <!-- ======================= -->
+ <!-- ===== DEPLOYMENT ====== -->
+ <!-- ======================= -->
+ <distributionManagement>
+  <repository>
+   <id>release</id>
+   <name>Releases</name>
+   <url>libs-releases-local</url>
+  </repository>
+  <snapshotRepository>
+   <id>snapshot</id>
+   <name>Snapshots</name>
+   <url>libs-snapshots-local</url>
+  </snapshotRepository>
+  <site>
+   <id>sites-repo</id>
+   <url>${mvn.sites.deploy.url}</url>
+  </site>
+ </distributionManagement>
+ <!-- ======================= -->
+ <!-- = PLUGIN REPOSITORIES = -->
+ <!-- ======================= -->
+ <pluginRepositories>
+  <pluginRepository>
+   <id>central</id>
+   <name>Maven Plugin Repository</name>
+   <url>http://repo1.maven.org/maven2</url>
+   <layout>default</layout>
+   <snapshots>
+    <enabled>false</enabled>
+   </snapshots>
+   <releases>
+    <updatePolicy>never</updatePolicy>
+   </releases>
+  </pluginRepository>
+  <pluginRepository>
+   <id>codehaus</id>
+   <name>codehaus</name>
+   <url>https://nexus.codehaus.org/content/groups/public/</url>
+   <layout>default</layout>
+   <releases>
+    <enabled>true</enabled>
+    <updatePolicy>never</updatePolicy>
+   </releases>
+   <snapshots>
+    <enabled>true</enabled>
+    <updatePolicy>always</updatePolicy>
+    <!-- <updatePolicy>interval:10</updatePolicy> -->
+   </snapshots>
+  </pluginRepository>
+  <pluginRepository>
+   <id>Sonatype Release Repo</id>
+   <url>https://oss.sonatype.org/content/repositories/releases</url>
+   <releases>
+    <enabled>true</enabled>
+    <updatePolicy>never</updatePolicy>
+   </releases>
+   <snapshots>
+    <enabled>false</enabled>
+    <!-- <updatePolicy>always</updatePolicy> -->
+    <!-- <updatePolicy>interval:10</updatePolicy> -->
+   </snapshots>
+  </pluginRepository>
+  <pluginRepository>
+   <id>TypeSafe Repo</id>
+   <url>http://repo.typesafe.com/typesafe/releases/</url>
+   <releases>
+    <enabled>true</enabled>
+    <updatePolicy>never</updatePolicy>
+   </releases>
+   <snapshots>
+    <enabled>false</enabled>
+   </snapshots>
+  </pluginRepository>
+ </pluginRepositories>
+ <!-- ======================= -->
+ <!-- ==== REPOSITORIES ===== -->
+ <!-- ======================= -->
+ <repositories>
+  <repository>
+   <id>Maven central</id>
+   <url>http://repo1.maven.org/maven2</url>
+   <releases>
+    <enabled>true</enabled>
+    <updatePolicy>never</updatePolicy>
+   </releases>
+   <snapshots>
+    <enabled>true</enabled>
+    <updatePolicy>always</updatePolicy>
+    <!-- <updatePolicy>interval:10</updatePolicy> -->
+   </snapshots>
+  </repository>
+  <repository>
+   <id>Scala Tools Repo</id>
+   <url>https://oss.sonatype.org/content/groups/scala-tools/</url>
+   <releases>
+    <enabled>true</enabled>
+    <updatePolicy>never</updatePolicy>
+   </releases>
+   <snapshots>
+    <enabled>true</enabled>
+    <updatePolicy>always</updatePolicy>
+    <!-- <updatePolicy>interval:10</updatePolicy> -->
+   </snapshots>
+  </repository>
+  <repository>
+   <id>Sonatype Release Repo</id>
+   <url>https://oss.sonatype.org/content/repositories/releases</url>
+   <releases>
+    <enabled>true</enabled>
+    <updatePolicy>never</updatePolicy>
+   </releases>
+   <snapshots>
+    <enabled>false</enabled>
+    <!-- <updatePolicy>always</updatePolicy> -->
+    <!-- <updatePolicy>interval:10</updatePolicy> -->
+   </snapshots>
+  </repository>
+  <repository>
+   <id>TypeSafe Repo</id>
+   <url>http://repo.typesafe.com/typesafe/releases/</url>
+   <releases>
+    <enabled>true</enabled>
+    <updatePolicy>never</updatePolicy>
+   </releases>
+   <snapshots>
+    <enabled>false</enabled>
+   </snapshots>
+  </repository>
+  <repository>
+   <id>JFrog Repo</id>
+   <url>http://repo.jfrog.org/artifactory/libs-releases-local</url>
+   <releases>
+    <enabled>true</enabled>
+    <updatePolicy>never</updatePolicy>
+   </releases>
+   <snapshots>
+    <enabled>false</enabled>
+    <!-- <updatePolicy>always</updatePolicy> -->
+    <updatePolicy>interval:10</updatePolicy>
+   </snapshots>
+  </repository>
+  <repository>
+   <id>codehaus</id>
+   <name>codehaus</name>
+   <url>https://nexus.codehaus.org/content/groups/public/</url>
+   <layout>default</layout>
+   <releases>
+    <enabled>true</enabled>
+    <updatePolicy>never</updatePolicy>
+   </releases>
+   <snapshots>
+    <enabled>true</enabled>
+    <updatePolicy>always</updatePolicy>
+    <!-- <updatePolicy>interval:10</updatePolicy> -->
+   </snapshots>
+  </repository>
+ </repositories>
+</project>

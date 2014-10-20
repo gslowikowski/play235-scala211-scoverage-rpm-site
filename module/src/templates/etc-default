@@ -1,0 +1,42 @@
+# #################################
+# ##### Default configuration #####
+# #################################
+
+# Available replacements 
+# ------------------------------------------------
+# author: ${{author}}
+# package description: ${{descr}}
+# startup script name: ${{exec}}
+# app directory: ${{chdir}}
+# retries for startup: ${{retries}}
+# retry timeout: ${{retryTimeout}}
+# normalized app name: ${{app_name}}
+# daemon user: ${{daemon_user}}
+# -------------------------------------------------
+
+
+# Setting -Xmx and -Xms in Megabyte
+-mem 1024
+
+# Setting -X directly (-J is stripped)
+# -J-X
+# -J-Xmx1024
+
+# Add additional jvm parameters
+-Drbc.env=dev
+
+# For play applications it manages its own PID 
+-Dpidfile.path=/var/run/${{app_name}}/play.pid
+
+# Turn on JVM debugging, open at the given port
+# -jvm-debug <port>  
+
+#Play 2 configuration file
+-Dconfig.file=/opt/rbcserver/conf/application.conf
+
+# Production logger configuration
+-Dlogger.resource=/opt/module/conf/prod-logger.xml
+-Dlogback.configurationFile=/opt/module/conf/prod-logger.xml
+
+#Play framework application secret key can be any uuidgen
+#-Dapplication.secret=<put key here>
