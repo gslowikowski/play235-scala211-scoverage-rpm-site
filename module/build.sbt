@@ -19,9 +19,9 @@ crossPaths := false //Disable scala version in file path
 
 packageArchetype.java_server  ++ Seq(
     // GENERAL LINUX PACKAGING 
-    maintainer := "Djay Chaudhary <djay@rbcplatform.com>",
-    packageSummary := "RBC Platform App on Play framework",
-    packageDescription := "RBC Platform Server. Needs MongoDB and MemcacheD to be running",
+    maintainer := "Patrick Sauts",
+    packageSummary := "Platform App on Play framework",
+    packageDescription := "Platform Server",
     defaultLinuxInstallLocation := "/opt",
     defaultLinuxLogsLocation := "/var/log"
 ) ++ Seq(
@@ -30,11 +30,11 @@ packageArchetype.java_server  ++ Seq(
     rpmRelease := "1",
     rpmVendor := "redbookconnect",
     rpmUrl := {
-    			val artifactory = "http://rbcplatform.artifactoryonline.com/rbcplatform/"
+    			val artifactory = "http://somewhere/"
   				if (Common.version.trim.contains("SNAPSHOT"))
-    				Some(artifactory + "libs-snapshots-local/com/rbcplatform/rbcplatform/")
+    				Some(artifactory + "libs-snapshots-local/com/github/blah/")
   				else
-    				Some(artifactory + "libs-releases-local/com/rbcplatform/rbcplatform/")
+    				Some(artifactory + "libs-releases-local/com/github/blah/")
 				},
     rpmLicense := Some("Commercial"),
     serverLoading in Rpm := ServerLoader.SystemV

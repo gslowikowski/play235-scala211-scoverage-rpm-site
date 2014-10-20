@@ -20,7 +20,6 @@
   <appender-ref ref="FILE_ROLLING" />
  </appender>
 
- <!-- RBC Classes -->
  <logger name="com.github" level="INFO">
   <appender-ref ref="ASYNC" />
  </logger>
