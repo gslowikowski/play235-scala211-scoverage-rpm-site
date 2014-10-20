@@ -54,13 +54,12 @@ object Global extends WithFilters(LoggingFilter) with GlobalSettings {
       //Print Banner in ANSI colors
       println(ansi.fg(MAGENTA).a("YEAH").reset())
 
-      // Display MANIFEST from the classloader's resourceserver jar
-      println(ansi.fg(YELLOW).a("ResourceServer JAR library details ..."))
+      println(ansi.fg(YELLOW).a("Module JAR library details ..."))
       val resources = this.getClass().getClassLoader()
       val manifests = resources.getResources("META-INF/MANIFEST.MF")
       while (manifests.hasMoreElements) {
         val nextManifest = manifests.nextElement
-        if (nextManifest.getFile.contains("resourceserver")) {
+        if (nextManifest.getFile.contains("module")) {
           val manifest = new java.util.jar.Manifest(nextManifest.openStream)
           val fattribs = manifest.getMainAttributes()
           fattribs.foreach { kv => // implicit java to scala conversion
