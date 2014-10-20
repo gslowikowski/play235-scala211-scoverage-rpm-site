@@ -21,7 +21,7 @@
  </appender>
 
  <!-- RBC Classes -->
- <logger name="com.rbcplatform" level="INFO">
+ <logger name="com.github" level="INFO">
   <appender-ref ref="ASYNC" />
  </logger>
  <root level="WARN">
