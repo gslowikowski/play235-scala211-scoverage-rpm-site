@@ -1,11 +1,11 @@
-# Adding system user/group : rbcserver and rbcserver
-if ! getent group | grep -q "^rbcserver:" ;
+# Adding system user/group : module and module
+if ! getent group | grep -q "^module:" ;
 then
-    echo "Creating system group: rbcserver"
-    groupadd --system rbcserver
+    echo "Creating system group: module"
+    groupadd --system module
 fi
-if ! getent passwd | grep -q "^rbcserver:"; 
+if ! getent passwd | grep -q "^module:"; 
 then
-    echo "Creating system user: rbcserver"
-    useradd --gid rbcserver --no-create-home --system -c 'RBC Platform App on Play framework' rbcserver
+    echo "Creating system user: module"
+    useradd --gid module --no-create-home --system -c 'Platform App on Play framework' module
 fi

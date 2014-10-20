@@ -1,7 +1,7 @@
-# Halting rbcserver
+# Halting module
 if [ "$1" = "0" ]; 
 then
-  echo "preun: Uninstall detected: Shutdown rbcserver"
-  service rbcserver stop
+  echo "preun: Uninstall detected: Shutdown module"
+  service module stop
 fi
 exit 0
