@@ -15,5 +15,5 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.3.5")
 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "0.7.5")
 
 
-//addSbtPlugin("org.scoverage" % "sbt-scoverage" % "0.99.7.1")
-addSbtPlugin("com.sksamuel.scoverage" % "sbt-scoverage" % "0.95.9")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "0.99.7.1")
+//addSbtPlugin("com.sksamuel.scoverage" % "sbt-scoverage" % "0.95.9")
