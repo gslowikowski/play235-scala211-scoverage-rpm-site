@@ -231,25 +231,6 @@
        <goal>copy-resources</goal>
       </goals>
       <configuration>
-       <outputDirectory>${project.build.directory}/site/scoverage-report</outputDirectory>
-       <overwrite>true</overwrite>
-       <resources>
-        <resource>
-         <directory>${project.build.directory}/scoverage-report</directory>
-         <includes>
-          <include>**/*</include>
-         </includes>
-        </resource>
-       </resources>
-      </configuration>
-     </execution>
-     <execution>
-      <id>copy-scovergae-to-site</id>
-      <phase>site</phase>
-      <goals>
-       <goal>copy-resources</goal>
-      </goals>
-      <configuration>
        <outputDirectory>${project.build.directory}/site/scaladocs</outputDirectory>
        <overwrite>true</overwrite>
        <resources>
@@ -263,6 +244,15 @@
       </configuration>
      </execution>
     </executions>
+   </plugin>
+   <plugin>
+    <groupId>com.google.code.scoverage-maven-plugin</groupId>
+    <artifactId>scoverage-maven-plugin</artifactId>
+    <configuration>
+     <excludedPackages>com.github.views.html.*</excludedPackages> <!--GS don't exclude, if you wish GS-->
+     <excludedFiles>.*?routes_(routing|reverseRouting)</excludedFiles>
+     <highlighting>true</highlighting>
+    </configuration>
    </plugin>
   </plugins>
  </build>
@@ -317,6 +307,11 @@
       </reports>
      </reportSet>
     </reportSets>
+   </plugin>
+   <plugin>
+    <groupId>com.google.code.scoverage-maven-plugin</groupId>
+    <artifactId>scoverage-maven-plugin</artifactId>
+    <version>${scoverage.plugin.version}</version>
    </plugin>
   </plugins>
  </reporting>

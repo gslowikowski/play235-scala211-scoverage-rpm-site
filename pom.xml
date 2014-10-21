@@ -26,11 +26,12 @@
   <compiler.version>1.8</compiler.version>
   <scala.version>2.11.2</scala.version>
   <play2-scala.version>2.11</play2-scala.version>
-  <play2.plugin.version>1.0.0-alpha8</play2.plugin.version>
+  <play2.plugin.version>1.0.0-alpha9-SNAPSHOT</play2.plugin.version>
   <play2.version>2.3.5</play2.version>
   <play-doc.version>1.2.1</play-doc.version>
   <play-cache.version>2.3.0</play-cache.version>
-  <sbt-compiler.plugin.version>1.0.0-beta4</sbt-compiler.plugin.version>
+  <sbt-compiler.plugin.version>1.0.0-beta5-SNAPSHOT</sbt-compiler.plugin.version>
+  <scoverage.plugin.version>1.0.0-alpha1-SNAPSHOT</scoverage.plugin.version>
   <nscala-time.version>1.4.0</nscala-time.version>
   <commons-lang3.version>3.3.2</commons-lang3.version>
   <reactivemongo.version>0.10.5.0.akka23</reactivemongo.version>
@@ -214,6 +215,11 @@
      <groupId>com.google.code.sbt-compiler-maven-plugin</groupId>
      <artifactId>sbt-compiler-maven-plugin</artifactId>
      <version>${sbt-compiler.plugin.version}</version>
+    </plugin>
+    <plugin>
+     <groupId>com.google.code.scoverage-maven-plugin</groupId>
+     <artifactId>scoverage-maven-plugin</artifactId>
+     <version>${scoverage.plugin.version}</version>
     </plugin>
     <plugin>
      <groupId>org.apache.maven.plugins</groupId>
