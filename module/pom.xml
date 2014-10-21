@@ -182,7 +182,7 @@
      </filesets>
     </configuration>
    </plugin>
-   <!-- Scaladocs and scoverage -->
+   <!-- Scaladocs -->
    <plugin>
     <artifactId>maven-antrun-plugin</artifactId>
     <executions>
@@ -199,22 +199,6 @@
          <arg line="doc" />
         </exec>
         <echo message="Generating ScalaDocs done" />
-       </target>
-      </configuration>
-     </execution>
-     <execution>
-      <id>scoverage</id>
-      <phase>site</phase>
-      <goals>
-       <goal>run</goal>
-      </goals>
-      <configuration>
-       <target>
-        <echo message="Generating Scoverage" />
-        <exec dir="${basedir}" executable="${basedir}/activator" failonerror="true">
-         <arg line="scoverage:test" />
-        </exec>
-        <echo message="Generating Scoverage done" />
        </target>
       </configuration>
      </execution>
