@@ -182,53 +182,6 @@
      </filesets>
     </configuration>
    </plugin>
-   <!-- Scaladocs -->
-   <plugin>
-    <artifactId>maven-antrun-plugin</artifactId>
-    <executions>
-     <execution>
-      <id>scaladoc</id>
-      <phase>site</phase>
-      <goals>
-       <goal>run</goal>
-      </goals>
-      <configuration>
-       <target>
-        <echo message="Generating ScalaDocs" />
-        <exec dir="${basedir}" executable="${basedir}/activator" failonerror="true">
-         <arg line="doc" />
-        </exec>
-        <echo message="Generating ScalaDocs done" />
-       </target>
-      </configuration>
-     </execution>
-    </executions>
-   </plugin>
-   <!-- For site generation -->
-   <plugin>
-    <artifactId>maven-resources-plugin</artifactId>
-    <executions>
-     <execution>
-      <id>copy-scaladocs-to-site</id>
-      <phase>site</phase>
-      <goals>
-       <goal>copy-resources</goal>
-      </goals>
-      <configuration>
-       <outputDirectory>${project.build.directory}/site/scaladocs</outputDirectory>
-       <overwrite>true</overwrite>
-       <resources>
-        <resource>
-         <directory>${project.build.directory}/api</directory>
-         <includes>
-          <include>**/*</include>
-         </includes>
-        </resource>
-       </resources>
-      </configuration>
-     </execution>
-    </executions>
-   </plugin>
    <plugin>
     <groupId>com.google.code.scoverage-maven-plugin</groupId>
     <artifactId>scoverage-maven-plugin</artifactId>
@@ -296,6 +249,11 @@
     <groupId>com.google.code.scoverage-maven-plugin</groupId>
     <artifactId>scoverage-maven-plugin</artifactId>
     <version>${scoverage.plugin.version}</version>
+   </plugin>
+   <plugin>
+    <groupId>net.alchim31.maven</groupId>
+    <artifactId>scala-maven-plugin</artifactId>
+    <version>3.2.0</version>
    </plugin>
   </plugins>
  </reporting>
